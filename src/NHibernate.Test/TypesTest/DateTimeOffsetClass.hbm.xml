@@ -10,5 +10,6 @@
     <version name="Revision" column="`Revision`" type="datetimeoffset" />
     <property name="Value" column="`Value`" />
     <property name="NullableValue" />
+    <property name="OptionalValue" />
   </class>
 </hibernate-mapping>

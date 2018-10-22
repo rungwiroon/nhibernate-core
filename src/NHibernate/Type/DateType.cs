@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using LanguageExt;
 using NHibernate.Engine;
 using NHibernate.SqlTypes;
 using NHibernate.UserTypes;
@@ -44,6 +45,17 @@ namespace NHibernate.Type
 			{
 				return true;
 			}
+
+			if (x is IOptional optionalX)
+			{
+				x = optionalX.MatchUntypedUnsafe(a => a, () => null);
+			}
+
+			if (y is IOptional optionalY)
+			{
+				y = optionalY.MatchUntypedUnsafe(a => a, () => null);
+			}
+
 			if (x == null || y == null)
 			{
 				return false;

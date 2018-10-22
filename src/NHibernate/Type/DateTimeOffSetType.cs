@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using LanguageExt;
 using NHibernate.Engine;
 using NHibernate.SqlTypes;
 
@@ -103,13 +104,23 @@ namespace NHibernate.Type
 				return true;
 			}
 
+			if (x is IOptional optionalX)
+			{
+				x = optionalX.MatchUntypedUnsafe(a => a, () => null);
+			}
+
+			if (y is IOptional optionalY)
+			{
+				y = optionalY.MatchUntypedUnsafe(a => a, () => null);
+			}
+
 			if (x == null || y == null)
 			{
 				return false;
 			}
 
-			var date1 = (DateTimeOffset) x;
-			var date2 = (DateTimeOffset) y;
+			DateTimeOffset date1 = (DateTimeOffset) x;
+			DateTimeOffset date2 = (DateTimeOffset) y;
 
 			return date1.Equals(date2);
 		}

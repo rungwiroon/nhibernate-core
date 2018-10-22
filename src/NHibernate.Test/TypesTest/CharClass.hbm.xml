@@ -11,5 +11,6 @@
 
     <property name="NormalChar"/>
     <property name="NullableChar"/>
+    <property name="OptionChar"/>
   </class>
 </hibernate-mapping>

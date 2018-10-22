@@ -1,3 +1,4 @@
+using LanguageExt;
 using NUnit.Framework;
 
 namespace NHibernate.Test.TypesTest
@@ -26,6 +27,7 @@ namespace NHibernate.Test.TypesTest
 				Assert.That(() => saved = s.Get<CharClass>(1), Throws.Nothing);
 				Assert.That(saved.NormalChar, Is.EqualTo('A'));
 				Assert.That(saved.NullableChar, Is.Null);
+				Assert.AreEqual(saved.OptionChar, Option<char>.None);
 
 				s.Delete(saved);
 				s.Flush();

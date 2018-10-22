@@ -1,5 +1,6 @@
 using System;
 using System.Data.Common;
+using LanguageExt;
 using NHibernate.Engine;
 using NHibernate.SqlTypes;
 using NHibernate.Util;
@@ -139,6 +140,11 @@ namespace NHibernate.Type
 		/// </remarks>
 		public sealed override void NullSafeSet(DbCommand st, object value, int index, ISessionImplementor session)
 		{
+			if (value is IOptional optionalVal)
+			{
+				value = optionalVal.MatchUntypedUnsafe(x => x, () => null);
+			}
+
 			if (value == null)
 			{
 				if (IsDebugEnabled)

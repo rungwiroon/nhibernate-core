@@ -1,4 +1,5 @@
 using System;
+using LanguageExt;
 
 namespace NHibernate.Test.TypesTest
 {
@@ -8,5 +9,6 @@ namespace NHibernate.Test.TypesTest
 		public DateTime Value { get; set; }
 		public DateTime Revision { get; protected set; }
 		public DateTime? NullableValue { get; set; }
+		public Option<DateTime> OptionalValue { get; set; }
 	}
 }

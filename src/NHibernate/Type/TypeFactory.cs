@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
+using LanguageExt;
 using NHibernate.Bytecode;
 using NHibernate.Cfg;
 using NHibernate.Classic;
@@ -145,6 +146,11 @@ namespace NHibernate.Type
 				var nullableType = typeof(Nullable<>).MakeGenericType(systemType);
 				typeAliases.Add(nullableType.FullName);
 				typeAliases.Add(nullableType.AssemblyQualifiedName);
+
+				//Also register Option<systemType> for ValueTypes
+				var optionType = typeof(Option<>).MakeGenericType(systemType);
+				typeAliases.Add(optionType.FullName);
+				typeAliases.Add(optionType.AssemblyQualifiedName);
 			}
 			return typeAliases;
 		}

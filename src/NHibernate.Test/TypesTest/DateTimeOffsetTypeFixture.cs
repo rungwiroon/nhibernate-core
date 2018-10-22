@@ -279,10 +279,12 @@ namespace NHibernate.Test.TypesTest
 					.CreateQuery(
 						"from DateTimeOffsetClass d where d.Value = :value and " +
 						"d.NullableValue = :nullableValue and " +
+						"d.OptionalValue = :optionalValue and " +
 						"d.Revision = :revision and " +
 						":other1 = :other2")
 					.SetDateTimeOffset("value", Now)
 					.SetDateTimeOffset("nullableValue", Now)
+					.SetDateTimeOffset("optionalValue", Now)
 					.SetDateTimeOffset("revision", Now)
 					.SetDateTimeOffset("other1", Now)
 					.SetDateTimeOffset("other2", Now);
@@ -291,7 +293,7 @@ namespace NHibernate.Test.TypesTest
 				t.Commit();
 			}
 
-			AssertSqlType(driver, 5, false);
+			AssertSqlType(driver, 6, false);
 
 			using (var s = OpenSession())
 			using (var t = s.BeginTransaction())
@@ -300,10 +302,12 @@ namespace NHibernate.Test.TypesTest
 					.CreateQuery(
 						"from DateTimeOffsetClass d where d.Value = :value and " +
 						"d.NullableValue = :nullableValue and " +
+						"d.OptionalValue = :optionalValue and " +
 						"d.Revision = :revision and " +
 						":other1 = :other2")
 					.SetParameter("value", Now, Type)
 					.SetParameter("nullableValue", Now, Type)
+					.SetParameter("optionalValue", Now, Type)
 					.SetParameter("revision", Now, Type)
 					.SetParameter("other1", Now, Type)
 					.SetParameter("other2", Now, Type);
@@ -312,7 +316,7 @@ namespace NHibernate.Test.TypesTest
 				t.Commit();
 			}
 
-			AssertSqlType(driver, 5, true);
+			AssertSqlType(driver, 6, true);
 		}
 
 		private void AssertSqlType(ClientDriverWithParamsStats driver, int expectedCount, bool exactType)

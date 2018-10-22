@@ -10,5 +10,6 @@
     <version name="Revision" column="`Revision`" type="utcticks"/>
     <property name="Value" column="`Value`" type="utcticks"/>
     <property name="NullableValue" type="utcticks"/>
+    <property name="OptionalValue" type="utcticks"/>
   </class>
 </hibernate-mapping>

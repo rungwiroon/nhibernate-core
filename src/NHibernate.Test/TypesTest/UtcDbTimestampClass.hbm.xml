@@ -10,5 +10,6 @@
     <version name="Revision" column="`Revision`" type="utcdbtimestamp"/>
     <property name="Value" column="`Value`" type="utcdbtimestamp"/>
     <property name="NullableValue" type="utcdbtimestamp"/>
+    <property name="OptionalValue" type="utcdbtimestamp"/>
   </class>
 </hibernate-mapping>

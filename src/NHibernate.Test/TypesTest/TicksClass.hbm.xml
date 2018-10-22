@@ -10,5 +10,6 @@
     <version name="Revision" column="`Revision`" type="ticks"/>
     <property name="Value" column="`Value`" type="ticks"/>
     <property name="NullableValue" type="ticks"/>
+    <property name="OptionalValue" type="ticks"/>
   </class>
 </hibernate-mapping>

@@ -1,5 +1,6 @@
 using System;
 using System.Data.Common;
+using LanguageExt;
 using NHibernate.Engine;
 using NHibernate.SqlTypes;
 

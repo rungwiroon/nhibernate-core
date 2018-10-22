@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using LanguageExt;
 
 namespace NHibernate.Util
 {
@@ -13,7 +14,8 @@ namespace NHibernate.Util
 
 		public static bool IsNullable(this System.Type type)
 		{
-			return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
+			return type.IsGenericType && (type.GetGenericTypeDefinition() == typeof(Nullable<>) 
+				|| type.GetGenericTypeDefinition() == typeof(Option<>));
 		}
 
 		public static bool IsNullableOrReference(this System.Type type)
